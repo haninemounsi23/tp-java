@@ -9,14 +9,31 @@ public class ServeurUDP
 
         while(true)
         {
-            System.out.println( "-Waiting data" );
+            System.out.println("-Waiting data");
 
-            DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
+            DatagramPacket packet =
+                    new DatagramPacket(new byte[1024], 1024);
+
             sock.receive(packet);
 
-            String str = new String(packet.getData() );
+            String str = new String(
+                    packet.getData(),
+                    0,
+                    packet.getLength()
+            );
 
-            System.out.println( "str=" + str );
+            System.out.println("str=" + str);
+
+            byte[] data = str.getBytes();
+
+            DatagramPacket response = new DatagramPacket(
+                    data,
+                    data.length,
+                    packet.getAddress(),
+                    packet.getPort()
+            );
+
+            sock.send(response);
         }
     }
 }
