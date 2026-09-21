@@ -33,3 +33,55 @@ Serveur → Client : `Hello World`
 Le serveur récupère l'adresse IP et le port du client grâce au paquet reçu, puis utilise ces informations pour lui renvoyer le message.
 
 Le client envoie donc d'abord son message, puis attend la réponse du serveur avant de se fermer.
+
+
+### Q4.1 – Le fonctionnement est-il correct ?
+
+Oui.
+Le client se connecte au serveur sur le port 80.
+Il envoie une requête HTTP et affiche la réponse.
+La commande > permet d'enregistrer la réponse dans un fichier.
+
+Exemple :
+
+java Clienthttp www.univ-rouen.fr > ur.txt
+
+### Q4.2 – Le contenu du fichier est-il conforme à ce qui est attendu ?
+
+Oui.
+La réponse contient une ligne de statut HTTP, des en-têtes, une ligne vide et le contenu de la page.
+
+### Q4.3 – La sortie contient-elle uniquement du HTML ?
+
+Non.
+La réponse contient aussi les informations HTTP et les en-têtes.
+Le code HTML arrive après les en-têtes.
+
+### Q4.4 – Test avec www.javaworld.com
+
+Le résultat n'est pas le même que dans un navigateur.
+Dans notre test, le serveur peut renvoyer une erreur 1003.
+Notre client HTTP est très simple et n'envoie pas toutes les informations d'un navigateur.
+
+### Q4.5 – Pourquoi le résultat est-il différent d'un navigateur ?
+
+Un navigateur est plus complet que notre programme.
+Il gère les redirections et HTTPS.
+Il charge aussi le CSS, les images et le JavaScript.
+Notre programme affiche seulement la réponse HTTP reçue.
+
+### Q4.6 – Signification des principaux en-têtes HTTP
+
+Date : date de la réponse.
+
+Server : informations sur le serveur Web.
+
+Content-Type : type du contenu envoyé.
+
+Content-Length : taille du contenu.
+
+Location : adresse utilisée pour une redirection.
+
+Connection : gestion de la connexion TCP.
+
+Il faut garder uniquement les en-têtes réellement présents dans ur.txt.
