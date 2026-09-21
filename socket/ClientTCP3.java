@@ -8,17 +8,10 @@ public class ClientTCP3
         try
         {
             Socket socket = new Socket("localhost", 2016);
-
-            DataOutputStream dOut =
-                new DataOutputStream(socket.getOutputStream());
-
+            DataOutputStream dOut =new DataOutputStream(socket.getOutputStream());
             dOut.writeUTF(args[0]);
-
-            DataInputStream dIn =
-                new DataInputStream(socket.getInputStream());
-
+            DataInputStream dIn =new DataInputStream(socket.getInputStream());
             System.out.println("Réponse : " + dIn.readUTF());
-
             socket.close();
         }
         catch(Exception e)

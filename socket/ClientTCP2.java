@@ -8,12 +8,8 @@ public class ClientTCP2
         try
         {
             Socket socket = new Socket("localhost", 2016);
-
-            DataOutputStream dOut =
-                new DataOutputStream(socket.getOutputStream());
-
+            DataOutputStream dOut =new DataOutputStream(socket.getOutputStream());
             dOut.writeUTF(args[0]);
-
             socket.close();
         }
         catch(Exception e)
